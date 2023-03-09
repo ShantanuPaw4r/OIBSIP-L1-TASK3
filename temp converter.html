@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Temperature Converter</title>
+    <style>
+      body {
+	    background-image: url('https://images.unsplash.com/photo-1488503674815-d6c13687ff65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFrZSUyMGJhY2tncm91bmR8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60'); 
+		background-size: 100%;
+		background-repeat: no-repeat;
+        font-family: sans-serif;
+        background-color: #F8F8F8;
+      }
+
+      h1 {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #424242;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 50px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        position: relative;
+      }
+
+      label {
+        display: block;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: #424242;
+      }
+
+      input[type="text"],
+      select {
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #BDBDBD;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      button {
+        font-size: 16px;
+        font-weight: 500;
+        background-color: #fa984d;
+        color: #FFFFFF;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .result {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 20px;
+        color: #424242;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Temperature Converter</h1>
+    <div class="container">
+      <label for="temp">Temperature:</label>
+      <input type="text" id="temp" placeholder="Enter temperature">
+      <label for="from">Convert from:</label>
+      <select id="from">
+        <option value="C">Celsius</option>
+        <option value="F">Fahrenheit</option>
+      </select>
+      <label for="to">Convert to:</label>
+      <select id="to">
+        <option value="C">Celsius</option>
+        <option value="F">Fahrenheit</option>
+      </select>
+      <button onclick="convert()">Convert</button>
+      <div class="result">
+        <span id="result"></span>
+      </div>
+    </div>
+    <script>
+      function convert() {
+        var temp = parseFloat(document.getElementById("temp").value);
+        var from = document.getElementById("from").value;
+        var to = document.getElementById("to").value;
+        var result;
+
+        if (from === "C" && to === "F") {
+          result = (temp * 9 / 5) + 32;
+        } else if (from === "F" && to === "C") {
+          result = (temp - 32) * 5 / 9;
+        } else {
+          result = temp;
+        }
+
+        document.getElementById("result").innerHTML = result.toFixed(2) + " " + to;
+      }
+    </script>
+  </body>
+</html>
